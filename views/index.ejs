@@ -1,0 +1,31 @@
+<% include partials/header.ejs %>
+    <div class="table-wrapper">
+        <% if (categorias.length > 0) {%>
+            <table class="table table-hovered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">C&oacute;digo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% categorias.forEach((categoria, index) => { %>
+                        <tr>
+                            <th scope="row"><%= categoria.codigo %></th>
+                            <td><%= categoria.nombre %></td>
+                            <td>
+                                <a href="/edit/<%= categoria.codigo %>" target="_self" rel="noopener" class="btn btn-sm btn-success">Editar</a>
+                                <a href="/delete/<%= categoria.codigo %>" class="btn btn-sm btn-danger">Borrar</a>
+                            </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } else { %>
+            <p class="text-center">No se encontraron categorías. Vaya <a href="/add" >aqu&iacute;</a> para agregar categorías.</p>
+        <% } %>
+    </div>
+</div>
+</body>
+</html>
