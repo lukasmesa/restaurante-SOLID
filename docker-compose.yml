@@ -1,0 +1,33 @@
+version: "3"
+
+services:
+  mysql:
+      container_name: mysql-solid
+      restart: always
+      image: mysql-solid
+      environment:
+        # Password for root access
+        MYSQL_ROOT_PASSWORD: 'root'
+      ports:
+        # <Port exposed> : < MySQL Port running inside container>
+        - '3306:3306'
+      expose:
+        # Opens port 3306 on the container
+        - '3306'
+        # Where our data will be persisted
+      volumes:
+        - mysql-data:/var/lib/mysql
+
+  app:
+    build:
+      context: .
+    depends_on:
+      - "mysql"
+    networks:
+      - back-tier  
+
+volumes:
+  mysql-data:
+  
+networks:
+  back-tier:

@@ -14,5 +14,8 @@
     "express": "^4.16.4",
     "mysql": "^2.16.0",
     "req-flash": "0.0.3"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
